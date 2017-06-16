@@ -1,0 +1,24 @@
+{% block content %}
+<ul>
+{% for query in queries %}
+    <li>{{ query }}</li>
+{% endfor %}
+</ul>
+<table>
+{{ form.as_table }}
+</table>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Trigger</button>
+</form>
+<table>
+    <thead>
+        <tr><th>Log messages</th></tr>
+    </thead>
+    <tbody>
+    {% for log in logs %}
+        <tr><td>{{ log }}</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
